@@ -11,7 +11,7 @@ describe('root', () => {
             .get('/')
             .expect(200)
             .then((res) => {
-                expect(res.text).toContain('Welcome to Express');
+                expect(res.text).toContain('Azure KeyVault');
                 done();
             }).catch(err => done(err));;
     });
