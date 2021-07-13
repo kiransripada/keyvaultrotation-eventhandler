@@ -39,8 +39,8 @@ jobs:
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
-        name: node-app
-        path: artifacts/node-app.tar    
+        name: node-app.tar
+        path: artifacts   
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,8 +54,8 @@ jobs:
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
-        name: node-app
-        path: artifacts/node-app.tar 
+        name: node-app.tar
+        path: artifacts 
        
     - name: 'UnTar files'
       run: |
