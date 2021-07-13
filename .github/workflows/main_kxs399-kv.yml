@@ -26,12 +26,21 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-
-    - name: Upload artifact for deployment job
+        
+    - name: 'Tar files'
+      run: | 
+        mkdir artifacts
+        tar -cvf node-app.tar .
+        ls -ltr
+        mv node-app.tar artifacts
+        ls -ltr
+        
+        
+    - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
-        name: node-app
-        path: .
+        name: node-app.tar
+        path: artifacts   
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,11 +49,28 @@ jobs:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
+    steps:          
+
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
-        name: node-app
+        name: node-app.tar
+        path: artifacts 
+       
+    - name: 'UnTar files'
+      run: |
+        mkdir node-app
+        echo "Inside node-app"
+        ls -ltra
+        cd artifacts
+        echo "Inside artifacts"
+        ls -ltra
+        mv node-app.tar ../node-app/node-app.tar
+        cd ../node-app
+        echo "Inside node-app"
+        ls -ltra
+        tar -xvf node-app.tar
+        ls -ltra
 
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
