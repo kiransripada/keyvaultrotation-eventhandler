@@ -26,21 +26,12 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-        
-    - name: 'Tar files'
-      run: | 
-        mkdir artifacts
-        tar -cvf node-app.tar .
-        ls -ltr
-        mv node-app.tar artifacts
-        ls -ltr
-        
-        
-    - name: 'Upload Artifact'
+
+    - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
-        name: node-app.tar
-        path: artifacts   
+        name: node-app
+        path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,35 +40,17 @@ jobs:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:          
-
+    steps:
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
       with:
-        name: node-app.tar
-        path: artifacts 
-       
-    - name: 'UnTar files'
-      run: |
-        mkdir node-app
-        echo "Inside node-app"
-        ls -ltra
-        cd artifacts
-        echo "Inside artifacts"
-        ls -ltra
-        mv node-app.tar ../node-app/node-app.tar
-        cd ../node-app
-        echo "Inside node-app"
-        ls -ltra
-        tar -xvf node-app.tar
-        ls -ltra
+        name: node-app
 
-        
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'kxs399-kv'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_728e43b6bfb54d1b8dd769d72fa28d55 }}
-        package: node-app
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_bfd8af6972e34566ab62af8b72749d9a }}
+        package: .
