@@ -47,11 +47,13 @@ const create = async () => {
         const parsedReq = JSON.parse(req['rawBody']);
         console.log('JavaScript HTTP trigger function processed a request.' + JSON.stringify(parsedReq));
 
-  /*      const eventGridEvent = parsedReq.data;
+
+      const eventGridEvent = parsedReq.data;
         const eventData = eventGridEvent.data;
 
         console.log('eventGridEvent ' + eventGridEvent);
         console.log('eventData ' + eventData);
+        console.log('******eventGridEvent*******');
 
 
         if (eventGridEvent.eventType == SubscriptionValidationEvent) {
@@ -71,10 +73,10 @@ const create = async () => {
         }else {
             console.log('Got myevent event data ' );
 
-        }*/
-        console.log('******eventGridEvent*******');
+        }
 
-        parsedReq.forEach(eventGridEvent => {
+
+ /*       parsedReq.forEach(eventGridEvent => {
             var eventData = eventGridEvent.data;
             // Deserialize the event data into the appropriate type based on event type using if/elif/else
             if (eventGridEvent.eventType == SubscriptionValidationEvent) {
@@ -93,7 +95,7 @@ const create = async () => {
                 console.log('Got myevent event data ' );
 
             }
-        });
+        });*/
 
 
 
