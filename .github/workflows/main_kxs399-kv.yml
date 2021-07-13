@@ -65,6 +65,7 @@ jobs:
         ls -ltra
         mv node-app.tar ../node-app.tar
         ls -ltra
+        cd ..
         tar -xvf node-app.tar
         rm -rf node-app.tar
         ls -ltra
