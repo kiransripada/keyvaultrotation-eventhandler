@@ -71,6 +71,7 @@ jobs:
         ls -ltra
         tar -xvf node-app.tar
         ls -ltra
+        rm -rf node-app.tar artifacts/
 
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
