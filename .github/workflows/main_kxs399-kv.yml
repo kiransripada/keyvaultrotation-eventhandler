@@ -38,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: archive/node-app.tar    
+        path: artifacts/node-app.tar    
 
   deploy:
     runs-on: ubuntu-latest
