@@ -31,7 +31,7 @@ jobs:
       run: | 
         mkdir artifacts
         tar -cvf node-app.tar .
-        mv node-app.tar archive
+        mv node-app.tar artifacts
         
         
     - name: 'Upload Artifact'
