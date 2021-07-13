@@ -74,6 +74,7 @@ jobs:
         rm -rf node-app.tar artifacts/
         cd ..
         ls -ltra
+        cd node-app
 
 
 
@@ -84,4 +85,4 @@ jobs:
         app-name: 'kxs399-kv'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_bfd8af6972e34566ab62af8b72749d9a }}
-        package: ./node-app
+        package: .
