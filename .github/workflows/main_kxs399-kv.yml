@@ -70,6 +70,8 @@ jobs:
         echo "Inside node-app"
         ls -ltra
         tar -xvf node-app.tar
+        ls -ltra
+
         
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
