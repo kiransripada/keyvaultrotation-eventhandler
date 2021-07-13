@@ -60,7 +60,8 @@ jobs:
     - name: 'UnTar files'
       run: |
         ls -ltra
-        tar  -xvf artifacts/node-app.tar
+        mkdir node-app
+        tar -C node-app  -xvf node-app.tar
         
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
@@ -69,4 +70,4 @@ jobs:
         app-name: 'kxs399-kv'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_728e43b6bfb54d1b8dd769d72fa28d55 }}
-        package: .
+        package: node-app
