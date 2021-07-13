@@ -31,7 +31,9 @@ jobs:
       run: | 
         mkdir artifacts
         tar -cvf node-app.tar .
+        ls -ltr
         mv node-app.tar artifacts
+        ls -ltr
         
         
     - name: 'Upload Artifact'
@@ -52,6 +54,7 @@ jobs:
       run: |
         ls -ltra
         mkdir node-app
+        ls -ltra
         tar -C node-app -xvf artifacts/node-app.tar
         
     - name: Download artifact from build job
