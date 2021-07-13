@@ -60,7 +60,7 @@ jobs:
     - name: 'UnTar files'
       run: |
         mkdir node-app
-        echo "Inside node-app"
+        echo "create node-app dir"
         ls -ltra
         cd artifacts
         echo "Inside artifacts"
@@ -70,13 +70,8 @@ jobs:
         echo "Inside node-app"
         ls -ltra
         tar -xvf node-app.tar
+        rm -rf node-app.tar
         ls -ltra
-        rm -rf node-app.tar artifacts/
-        cd ..
-        ls -ltra
-        cd node-app
-
-
 
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
