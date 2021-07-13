@@ -37,7 +37,7 @@ const create = async () => {
     });
 
     // root route - serve static file
-    app.post('/rotatekey', (req, res) => {
+    app.post('/rotatekey', async(req, res) => {
         const SubscriptionValidationEvent = "Microsoft.EventGrid.SubscriptionValidationEvent";
         const SecretNearExpiryEvent = "Microsoft.KeyVault.SecretNearExpiry";
         const CustomTopicEvent = "Contoso.Items.ItemReceivedEvent";
@@ -72,12 +72,14 @@ const create = async () => {
             console.log('Got myevent event data ' );
 
         }*/
-
+        console.log('******eventGridEvent*******');
 
         parsedReq.forEach(eventGridEvent => {
             var eventData = eventGridEvent.data;
             // Deserialize the event data into the appropriate type based on event type using if/elif/else
             if (eventGridEvent.eventType == SubscriptionValidationEvent) {
+                console.log('*************');
+
                 console.log('Got SubscriptionValidation event data, validationCode: ' + eventData.validationCode + ', topic: ' + eventGridEvent.topic);
                 console.res = {
                     validationResponse: eventData.validationCode
