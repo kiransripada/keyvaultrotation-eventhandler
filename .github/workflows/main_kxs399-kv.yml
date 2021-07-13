@@ -53,9 +53,7 @@ jobs:
     - name: 'UnTar files'
       run: |
         ls -ltra
-        mkdir node-app
-        ls -ltra
-        tar -C node-app -xvf artifacts/node-app.tar
+        tar  -xvf artifacts/node-app.tar
         
     - name: Download artifact from build job
       uses: actions/download-artifact@v2
