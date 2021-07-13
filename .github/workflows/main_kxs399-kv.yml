@@ -59,15 +59,11 @@ jobs:
        
     - name: 'UnTar files'
       run: |
-        mkdir node-app
-        echo "create node-app dir"
         ls -ltra
         cd artifacts
         echo "Inside artifacts"
         ls -ltra
-        mv node-app.tar ../node-app/node-app.tar
-        cd ../node-app
-        echo "Inside node-app"
+        mv node-app.tar ../node-app.tar
         ls -ltra
         tar -xvf node-app.tar
         rm -rf node-app.tar
