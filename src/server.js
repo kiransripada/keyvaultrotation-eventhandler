@@ -39,13 +39,40 @@ const create = async () => {
     // root route - serve static file
     app.post('/rotatekey', (req, res) => {
         const SubscriptionValidationEvent = "Microsoft.EventGrid.SubscriptionValidationEvent";
-        const StorageBlobCreatedEvent = "Microsoft.KeyVault.SecretNearExpiry";
+        const SecretNearExpiryEvent = "Microsoft.KeyVault.SecretNearExpiry";
         const CustomTopicEvent = "Contoso.Items.ItemReceivedEvent";
 
         const order = req.rawBody;
 
         const parsedReq = JSON.parse(req['rawBody']);
-        console.log('JavaScript HTTP trigger function processed a request.' + parsedReq);
+        console.log('JavaScript HTTP trigger function processed a request.' + JSON.stringify(parsedReq));
+
+  /*      const eventGridEvent = parsedReq.data;
+        const eventData = eventGridEvent.data;
+
+        console.log('eventGridEvent ' + eventGridEvent);
+        console.log('eventData ' + eventData);
+
+
+        if (eventGridEvent.eventType == SubscriptionValidationEvent) {
+            console.log('Got SubscriptionValidation event data, validationCode: ' + eventData.validationCode + ', topic: ' + eventGridEvent.topic);
+
+            console.log('Got SubscriptionValidation event URL: '+  eventGridEvent.url);
+
+            console.res = {
+                validationResponse: eventData.validationCode
+            };
+            res.status(200).send(JSON.stringify(console.res));
+
+        } else if (eventGridEvent.eventType == SecretNearExpiryEvent) {
+            console.log('Got Blobcreated event data, blob URI ' + eventData.url);
+        } else if (eventGridEvent.eventType == CustomTopicEvent) {
+            console.log('Got ContosoItemReceived event data, item SKU ' + eventData.itemSku);
+        }else {
+            console.log('Got myevent event data ' );
+
+        }*/
+
 
         parsedReq.forEach(eventGridEvent => {
             var eventData = eventGridEvent.data;
@@ -55,6 +82,7 @@ const create = async () => {
                 console.res = {
                     validationResponse: eventData.validationCode
                 };
+                res.status(200).send(JSON.stringify(console.res));
             } else if (eventGridEvent.eventType == StorageBlobCreatedEvent) {
                 console.log('Got Blobcreated event data, blob URI ' + eventData.url);
             } else if (eventGridEvent.eventType == CustomTopicEvent) {
@@ -64,6 +92,7 @@ const create = async () => {
 
             }
         });
+
 
 
     });
