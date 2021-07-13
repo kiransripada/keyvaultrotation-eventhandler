@@ -61,7 +61,7 @@ jobs:
       run: |
         mkdir node-app
         ls -ltra
-        tar -C node-app  -xvf /home/runner/work/keyvaultrotation-eventhandler/keyvaultrotation-eventhandler/artifacts/node-app.tar
+        tar -C node-app  -xvf /artifacts/node-app.tar
         
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
