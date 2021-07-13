@@ -59,9 +59,9 @@ jobs:
        
     - name: 'UnTar files'
       run: |
-        ls -ltra
         mkdir node-app
-        tar -C node-app  -xvf node-app.tar
+        ls -ltra
+        tar -C node-app  -xvf /home/runner/work/keyvaultrotation-eventhandler/keyvaultrotation-eventhandler/artifacts/node-app.tar
         
     - name: 'Deploy to Azure Web App'
       id: deploy-to-webapp
