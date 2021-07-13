@@ -64,7 +64,7 @@ jobs:
         cd artifacts
         ls -ltra
         mv node-app.tar ../node-app
-        cd node-app
+        cd ../node-app
         ls -ltra
         tar -xvf node-app.tar
         
