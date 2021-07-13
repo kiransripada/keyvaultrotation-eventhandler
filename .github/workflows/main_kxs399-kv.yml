@@ -62,8 +62,8 @@ jobs:
         mkdir node-app
         ls -ltra
         cd artifacts
-        mv node-app.tar ../node-app
         ls -ltra
+        mv node-app.tar ../node-app
         tar -xvf node-app.tar
         
     - name: 'Deploy to Azure Web App'
