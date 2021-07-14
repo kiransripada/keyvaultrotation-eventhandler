@@ -48,7 +48,7 @@ const create = async () => {
         console.log('JavaScript HTTP trigger function processed a request.' + JSON.stringify(parsedReq));
 
 
-      const eventGridEvent = await parsedReq.data;
+      const eventGridEvent =  parsedReq[0];
         const eventData = await eventGridEvent.data;
 
         console.log('eventGridEvent ' + eventGridEvent);
