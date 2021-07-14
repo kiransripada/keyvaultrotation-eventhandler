@@ -110,12 +110,14 @@ const create = async () => {
                     }
                 ]
             }
-
-            const pos = await  fetch(outgoing_URL, {
+        console.log("****Teams Notification data***"+ JSON.stringify(body))
+            const teamsResp = await  fetch(outgoing_URL, {
                 method: 'post',
                 body: JSON.stringify(body),
                 headers: {'Content-Type': 'application/json'},
             });
+            console.log("***teamsResp***"+ teamsResp.status)
+
             res.status(202).send("success!")
 
 
