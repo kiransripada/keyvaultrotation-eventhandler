@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const  fetch = require('node-fetch');
+
 
 const outgoing_URL= 'https://swcompany.webhook.office.com/webhookb2/39bdc88e-8fff-4ba1-b60a-06049a6be189@44b79a67-d972-49ba-9167-8eb05f754a1a/IncomingWebhook/5e8f605f8afe4ffdb34cc26d11b9a3eb/6d139f40-a8a7-4485-a5ed-9de798a1a121';
 
@@ -127,30 +129,6 @@ const create = async () => {
             console.log('Got myevent event data ' );
 
         }
-
-
- /*       parsedReq.forEach(eventGridEvent => {
-            var eventData = eventGridEvent.data;
-            // Deserialize the event data into the appropriate type based on event type using if/elif/else
-            if (eventGridEvent.eventType == SubscriptionValidationEvent) {
-                console.log('*************');
-
-                console.log('Got SubscriptionValidation event data, validationCode: ' + eventData.validationCode + ', topic: ' + eventGridEvent.topic);
-                console.res = {
-                    validationResponse: eventData.validationCode
-                };
-                res.status(200).send(JSON.stringify(console.res));
-            } else if (eventGridEvent.eventType == StorageBlobCreatedEvent) {
-                console.log('Got Blobcreated event data, blob URI ' + eventData.url);
-            } else if (eventGridEvent.eventType == CustomTopicEvent) {
-                console.log('Got ContosoItemReceived event data, item SKU ' + eventData.itemSku);
-            }else {
-                console.log('Got myevent event data ' );
-
-            }
-        });*/
-
-
 
     });
 
