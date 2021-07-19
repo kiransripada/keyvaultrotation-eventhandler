@@ -1,4 +1,4 @@
-# darwin-storagekeyrotation-eventhandler
+# azure-storagekeyrotation-eventhandler
 
 
 npm install kuduscript -g
